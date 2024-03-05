@@ -19,7 +19,7 @@ export class MenuInicial extends Vista {
 
 
     this.imagenPortada();
-    this.setupImageViewer(); // Call setupImageViewer to initialize the image viewer
+    this.setupImageViewer(); 
 
   }
 
@@ -61,14 +61,14 @@ export class MenuInicial extends Vista {
     const nextButton = document.querySelector('.next-btn');
   
     function showImage(index) {
-      // Agregar la clase fade-out para iniciar la animación de desvanecimiento
+      // animación de desvanecimiento
       imageElement.classList.add('fade-out');
       
       setTimeout(() => {
-        // Cambiar la imagen después de que se haya completado la animación de desvanecimiento
+        // Cambiar la imagen
         imageElement.src = images[index];
         
-        // Eliminar la clase fade-out después de cambiar la imagen para permitir la animación de aparecer
+        // Eliminar la clase fade-out para permitir la animación de aparecer
         setTimeout(() => {
           imageElement.classList.remove('fade-out');
         }, 100);
