@@ -12,6 +12,7 @@ export class Uno extends Vista {
   inicializarDragAndDrop() {
     const piezas = document.querySelectorAll('.contenido #contenidopiezas .pieza');
     const celdas = document.querySelectorAll('.contenido #puzzle .celda');
+    const contenedorPiezas = document.getElementById('contenidopiezas');
 
     // Agregamos la capacidad de arrastre a las piezas del puzzle
     piezas.forEach(pieza => {
@@ -23,6 +24,16 @@ export class Uno extends Vista {
       celda.addEventListener('dragstart', this.dragStart.bind(this));
       celda.addEventListener('dragover', this.dragOver.bind(this));
       celda.addEventListener('drop', this.drop.bind(this));
+    });
+
+    // Agregamos la capacidad de arrastre y de recibir piezas al contenedor de piezas
+    contenedorPiezas.addEventListener('dragover', this.dragOver.bind(this));
+    contenedorPiezas.addEventListener('drop', this.drop.bind(this));
+    contenedorPiezas.draggable = true;
+
+    // Agregamos la capacidad de arrastre a las celdas del puzzle para volver al contenedor de piezas
+    celdas.forEach(celda => {
+      celda.draggable = true;
     });
   }
 
@@ -39,9 +50,13 @@ export class Uno extends Vista {
     const piezaId = event.dataTransfer.getData('text/plain');
     const piezaArrastrada = document.getElementById(piezaId);
     const celdaDestino = event.target.closest('.celda');
+    const contenedorPiezas = document.getElementById('contenidopiezas');
 
     if (!celdaDestino || !celdaDestino.classList.contains('celda')) {
       console.error('No se encontró una celda destino válida.');
+
+      // Devolver la pieza al contenedor de piezas
+      contenedorPiezas.appendChild(piezaArrastrada);
       return;
     }
 
@@ -56,7 +71,6 @@ export class Uno extends Vista {
     }
 
     // Si la pieza se encuentra en el contenedor de piezas, la eliminamos de allí
-    const contenedorPiezas = document.getElementById('contenidopiezas');
     if (piezaArrastrada.parentNode === contenedorPiezas) {
       piezaArrastrada.parentNode.removeChild(piezaArrastrada);
     }
