@@ -9,6 +9,7 @@ export class Uno extends Vista {
  
 
 
+
   inicializarDragAndDrop() {
     const piezas = document.querySelectorAll('.contenido #contenidopiezas .pieza');
     const celdas = document.querySelectorAll('.contenido #puzzle .celda');
@@ -31,9 +32,9 @@ export class Uno extends Vista {
     contenedorPiezas.addEventListener('drop', this.drop.bind(this));
     contenedorPiezas.draggable = true;
 
-    // Agregamos la capacidad de arrastre a las celdas del puzzle para volver al contenedor de piezas
+    // Eliminamos la capacidad de arrastre de las celdas del puzzle
     celdas.forEach(celda => {
-      celda.draggable = true;
+      celda.draggable = false;
     });
   }
 
