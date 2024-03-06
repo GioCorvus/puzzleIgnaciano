@@ -6,7 +6,6 @@ export class Uno extends Vista {
     this.restService = new Rest();
     this.inicializarDragAndDrop();
   }
-
   inicializarDragAndDrop() {
     const piezas = document.querySelectorAll('.contenido #contenidopiezas .pieza');
     const celdas = document.querySelectorAll('.contenido #puzzle .celda');
@@ -44,6 +43,7 @@ export class Uno extends Vista {
       if (contenedor) {
         const piezaClonada = piezaArrastrada.cloneNode(true);
         contenedor.appendChild(piezaClonada);
+        piezaArrastrada.parentNode.removeChild(piezaArrastrada); // Eliminar la pieza del contenedor original
       } else {
         console.error("Elemento objetivo inválido.");
       }
