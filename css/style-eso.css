@@ -1,0 +1,66 @@
+@font-face {
+    font-family: 'fuentekids';
+    src: url("../assets/fonts/Moanas.ttf") format('truetype');
+}
+html, body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+#divDos{
+    height: 100%;
+    background-color:#E6F2FF;
+}
+.encabezado{
+    height: 10%;
+    width: 100%;
+    background-color: #088DE0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.encabezado h1{
+    color: white;
+    font-size: 65px;
+    font-family: 'fuentekids';
+}
+.contenido{
+    display: flex;
+    height: 90%;
+}
+#textoImagen{
+    width: 30%;
+    background-color: white;
+    border-left: #CCCCCC solid 2px;
+    padding: 5%;
+    font-size: 20px;
+}
+#imagenCompleta{
+    width: 60%;
+    text-align: center;
+}
+#imagenCompleta img{
+    width: 90%;
+    height: 75%;
+    display: block;
+    margin: 5% auto 0;
+}
+#imagenCompleta button{
+    width: 55%;
+    height: 10%;
+    background-color: #92DB6D;
+    border-color: #92AE6D;
+    border-radius: 20px;
+    cursor: pointer;
+    color: white;
+    font-weight: bolder;
+    font-size: 30px;
+}
+#imagenCompleta button:hover{
+    background-color: #92AE6D;
+    border-color: #6d864c;
+    border-right: 4px solid #92DB6D;
+    border-bottom: 4px solid #92DB6D;
+    color: #c4d2e0;
+}
