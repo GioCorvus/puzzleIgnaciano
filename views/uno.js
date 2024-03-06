@@ -8,5 +8,8 @@ export class Uno extends Vista {
     this.restService = new Rest();
   }
 
+  crearGrid(x,y){
+
+  }
 
 }
