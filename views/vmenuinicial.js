@@ -36,7 +36,7 @@ export class MenuInicial extends Vista {
   
     document.body.appendChild(imageElement);
   
-    await new Promise(resolve => setTimeout(resolve, 0));
+    await new Promise(resolve => setTimeout(resolve, 50));
   
     imageElement.style.transition = 'opacity 1s ease';
     imageElement.style.opacity = '0';
@@ -52,7 +52,6 @@ export class MenuInicial extends Vista {
       'assets/img/icoLight.png',
       'assets/img/icoRead.png',
       'assets/img/icoVamp.png'
-
     ];
   
     let currentIndex = 0;
@@ -71,8 +70,8 @@ export class MenuInicial extends Vista {
         // Eliminar la clase fade-out para permitir la animación de aparecer
         setTimeout(() => {
           imageElement.classList.remove('fade-out');
-        }, 100);
-      }, 500);
+        }, 0);
+      }, 0);
     }
     
     prevButton.addEventListener('click', () => {

@@ -2,3 +2,10 @@
     width: 200px;
     height: 200px;
 }
+
+#contenedor-imagenes-infantil, 
+#contenedor-imagenes-primaria, 
+#contenedor-imagenes-eso, 
+#contenedor-imagenes-bach-ciclos,  img{
+    width: 50%;
+}
