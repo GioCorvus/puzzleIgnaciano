@@ -49,18 +49,11 @@ html, body{
 #imagenCompleta button{
     width: 55%;
     height: 10%;
-    background-color: #92DB6D;
-    border-color: #92AE6D;
+    background-color: #E87B00;
+    border-color: #cc6d00;
     border-radius: 20px;
     cursor: pointer;
     color: white;
     font-weight: bolder;
     font-size: 30px;
-}
-#imagenCompleta button:hover{
-    background-color: #92AE6D;
-    border-color: #6d864c;
-    border-right: 4px solid #92DB6D;
-    border-bottom: 4px solid #92DB6D;
-    color: #c4d2e0;
 }
