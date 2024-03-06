@@ -7,8 +7,9 @@ html, body{
     height: 100%;
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
-#divDos{
+#divDos, #divUno{
     height: 100%;
     background-color:#E6F2FF;
 }
@@ -56,4 +57,97 @@ html, body{
     color: white;
     font-weight: bolder;
     font-size: 30px;
+}
+
+#contenidopiezas{
+    display: block;
+    width: 30%;
+    height: 100%;
+    background-color: white;
+    border-right: 3px solid #CCCCCC;
+}
+#contenidotablero{
+    background-size: 100%;
+    display: flex;
+    width: 70%;
+    height: 100%;
+}
+.titulo{
+    font-family: 'fuentekids';
+    font-size: 65px;
+}
+.pieza{
+    border: 1px solid black;
+    background-color: red;
+    display: block;
+    width: 180px;
+    height: 180px;
+    position: relative;
+    left:50px ;
+    top:100px ;
+}
+#jesuita1,#jesuita2{
+    position: absolute;
+    display: block;
+    width: 200px;
+    height: 200px;
+    bottom: 0px;
+}
+#jesuita1{
+    left: 25px;
+    bottom: -8px;
+}
+#jesuita2{
+    right: 25px;
+}
+#puzzle {
+    display: grid;
+    grid-template-rows: auto auto; /* Dos filas de tamaño automático */
+    grid-template-columns: auto auto auto; /* Tres columnas de tamaño automático */
+    gap: 0px; /* Espacio entre las celdas */
+    justify-items: center; /* Alineación horizontal al centro */
+    align-items: center; /* Alineación vertical al centro */
+    border: 3px solid #CCCCCC; /* Agrega un borde sólido de 2px de grosor en negro */
+    padding: 5px; /* Añade un espacio interior de 10px */
+    width: 80%; /* Ancho del 80% */
+    height: 60%; /* Altura del 60% */
+    margin: auto;
+    background-color: white;
+}
+
+/* Estilos para las imágenes dentro del grid */
+#puzzle div {
+    min-width: 100%; /* Para asegurar que las imágenes no se salgan del contenedor */
+    min-height: 100%;
+    border: 1px solid #afe694;
+    background-color:#edffe4 ;
+}
+#puzzle .celda1 {
+    grid-row: 1;
+    grid-column: 1;
+}
+
+#puzzle .celda2 {
+    grid-row: 1;
+    grid-column: 2;
+}
+
+#puzzle .celda3 {
+    grid-row: 1; /* Primera fila */
+    grid-column: 3; /* Tercera columna */
+}
+
+#puzzle .celda4 {
+    grid-row: 2; /* Segunda fila */
+    grid-column: 1; /* Primera columna */
+}
+
+#puzzle .celda5 {
+    grid-row: 2; /* Segunda fila */
+    grid-column: 2; /* Segunda columna */
+}
+
+#puzzle .celda6 {
+    grid-row: 2; /* Segunda fila */
+    grid-column: 3; /* Tercera columna */
 }
