@@ -8,12 +8,12 @@ export class Uno extends Vista {
     this.siguienteImg = document.getElementById('siguienteImg-infantil');
     this.modelopuzzle = new ModeloPuzzle();
   
+
     // Asigna el evento clic al botón
     this.siguienteImg.addEventListener('click', () => this.mostrarSiguienteImgInfantil());
     this.contador = 1;
   }
-
-  crearGrid(x,y){
+ crearGrid(x,y){
     //X Columnas
     //Y Filas
     console.log("CrearGrid")
@@ -34,7 +34,6 @@ export class Uno extends Vista {
   validarPuzzle(){
   
   }
-
   mostrarSiguienteImgInfantil() {
     if (this.contador < 10){
       const imagen = `ignacio0${this.contador}`;
