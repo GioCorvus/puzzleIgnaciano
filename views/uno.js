@@ -5,30 +5,32 @@ export class Uno extends Vista {
   constructor(controlador, base) {
     super(controlador, base);
     this.restService = new Rest();
-    this.inicializarDragAndDrop();
     this.crearGrid(2,2)
+    this.inicializarDragAndDrop();
   }
-  crearGrid(x,y){
-    //X Columnas
-    //Y Filas
-    console.log("CrearGrid")
-    const tablero = document.getElementById('puzzle');
-    tablero.innerHTML = '';
+crearGrid(x,y){
+  //X Columnas
+  //Y Filas
+  console.log("CrearGrid")
+  const tablero = document.getElementById('puzzle');
+  tablero.innerHTML = '';
 
-    tablero.style.gridTemplateColumns = `repeat(${x}, 1fr)`;
-    tablero.style.gridTemplateRows = `repeat(${y}, 1fr)`;
+  tablero.style.gridTemplateColumns = `repeat(${x}, 1fr)`;
+  tablero.style.gridTemplateRows = `repeat(${y}, 1fr)`;
 
-    for (let i = 0; i < x * y; i++) {
-        const celda = document.createElement('div');
-        celda.className="celda";
-        tablero.appendChild(celda);
-    }
+  for (let i = 0; i < x * y; i++) {
+      const celda = document.createElement('div');
+      celda.className="celda";
+      celda.id="celda"+(i+1);
+      tablero.appendChild(celda);
   }
+}
 
-  validarPuzzle(){
+validarPuzzle(){
 
-  }
+}
   inicializarDragAndDrop() {
+    console.log("draganddrop")
     try {
       const piezas = document.querySelectorAll('.contenido #contenidopiezas .pieza');
       const celdas = document.querySelectorAll('.contenido #puzzle .celda');
