@@ -48,43 +48,53 @@ export class MenuInicial extends Vista {
 
   setupImageViewer() {
     const images = [
-      'assets/img/icoHielo.png',
-      'assets/img/icoLight.png',
-      'assets/img/icoRead.png',
-      'assets/img/icoVamp.png'
+      'assets/img/1.jpg',
+      'assets/img/2.jpg',
+      'assets/img/3.jpg',
+      'assets/img/4.jpg'
 
     ];
-  
-    let currentIndex = 0;
+
+    let currentIndex = 0; // Initialize currentIndex to 0
     const imageElement = document.querySelector('.image');
     const prevButton = document.querySelector('.prev-btn');
     const nextButton = document.querySelector('.next-btn');
-  
-    function showImage(index) {
-      // animación de desvanecimiento
-      imageElement.classList.add('fade-out');
-      
-      setTimeout(() => {
-        // Cambiar la imagen
-        imageElement.src = images[index];
-        
-        // Eliminar la clase fade-out para permitir la animación de aparecer
+    imageElement.src = images[0];
+
+    function showImage(index, direction) {
+
+    if (direction === 'prev') {
+        imageElement.classList.add('fade-out-prev');
         setTimeout(() => {
-          imageElement.classList.remove('fade-out');
-        }, 100);
-      }, 500);
+            imageElement.src = images[index];
+            imageElement.classList.remove('fade-out-prev');
+            imageElement.classList.add('fade-in-prev');
+            setTimeout(() => {
+                imageElement.classList.remove('fade-in-prev');
+            }, 500);
+        }, 500);
+    } else if (direction === 'next') {
+        imageElement.classList.add('fade-out-next');
+        setTimeout(() => {
+            imageElement.src = images[index];
+            imageElement.classList.remove('fade-out-next');
+            imageElement.classList.add('fade-in-next');
+            setTimeout(() => {
+                imageElement.classList.remove('fade-in-next');
+            }, 500);
+        }, 500);
     }
+}
     
-    prevButton.addEventListener('click', () => {
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-      showImage(currentIndex);
-      console.log("wololo")
-    });
-    
-    nextButton.addEventListener('click', () => {
-      currentIndex = (currentIndex + 1) % images.length;
-      showImage(currentIndex);
-    });
+  prevButton.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showImage(currentIndex, 'prev'); // Pass 'prev' as direction
+  });
+      
+  nextButton.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    showImage(currentIndex, 'next'); // Pass 'next' as direction
+  });
     
     imageElement.addEventListener('click', () => {
       switch (currentIndex) {

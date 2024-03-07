@@ -1,4 +1,198 @@
-.image-container img{
-    width: 200px;
-    height: 200px;
+@font-face {
+    font-family: 'fuente'; /* Nombre que deseas asignarle a la fuente */
+    src: url('../assets/fonts/fuente.ttf') format('truetype'); /* Ruta a tu archivo de fuente TTF */
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: pink;
+}
+
+#divMenuInicial {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    background-color: red;
+    height: 100%;
+
+    position: relative; /* Ensure positioning context for absolute positioning */
+
+    background-image: url('../assets/img/bgMenu.png');
+    background-size: cover; /* This ensures the background image covers the entire container */
+    background-position: center; /* This centers the background image */
+    background-repeat: no-repeat; /* Prevent background from repeating */
+    background-attachment: fixed; /* Keep background fixed while scrolling */
+}
+
+p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'fuente', sans-serif; /* Usa la nueva fuente */
+    font-size: 40px;
+    color: rgb(255, 255, 255);
+    animation: palpitacion 1s infinite; /* Aplica la animación de palpitación */
+    filter: drop-shadow(0 0 20px rgb(0, 0, 0)); /* Add drop shadow on hover */
+
+}
+
+@keyframes palpitacion {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+
+.image-container {
+    position: relative; /* Ensure positioning context for absolute positioning */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Ensure the container takes full width */
+    height: 100%;
+}
+
+.image-container img {
+    border-radius: 20px;
+    width: 400px;
+    height: 400px;
+    filter: drop-shadow(0 0 20px rgb(235, 198, 107)); /* Add drop shadow on hover */
+    transition: transform 0.5s ease-in-out, filter 0.5s ease-in-out; /* Add filter to transition */
+}
+
+.image-container img:hover {
+    transform: scale(1.1); /* Increase scale on hover */
+    filter: drop-shadow(0 0 20px rgba(0, 0, 0, 1)); /* Add drop shadow on hover */
+}
+
+.prev-btn, .next-btn {
+    background: none;
+    border: none;
+    outline: none;
+}
+
+#btIzq, #btnDcha{
+    width: 100px;
+    height: auto;
+}
+
+#btIzq{
+    margin-right: 50px;
+}
+
+#btnDcha{
+    margin-left: 50px;
+}
+
+#btIzq:hover, #btnDcha:hover {
+    animation: heartbeat 1s infinite; /* Apply the heartbeat animation infinitely */
+}
+
+.button-container {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+
+/* Apply the jello-horizontal animation to the buttons when they are clicked */
+#btIzq:active, #btnDcha:active {
+    animation: jello-horizontal 2s linear both; /* Apply the jello-horizontal animation */
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Define the keyframe animation for the jello-horizontal effect */
+@keyframes jello-horizontal {
+    0% { transform: scale3d(1, 1, 1); }
+    20% { transform: scale3d(2, 0.5, 1); }
+    40% { transform: scale3d(0.5, 2, 1); }
+    60% { transform: scale3d(1.8, 0.7, 1); }
+    80% { transform: scale3d(0.7, 1.8, 1); }
+    100% { transform: scale3d(1, 1, 1); }
+}
+
+.fade-out-prev {
+    animation: fadeOutPrev 0.5s ease-out;
+}
+
+@keyframes fadeOutPrev {
+    0% { transform: translateX(0); opacity: 1; }
+    100% { transform: translateX(100%); opacity: 0; }
+}
+
+.fade-out-next {
+    animation: fadeOutNext 0.5s ease-out;
+}
+
+@keyframes fadeOutNext {
+    0% { transform: translateX(0); opacity: 1; }
+    100% { transform: translateX(-100%); opacity: 0; }
+}
+
+.fade-in-prev {
+    animation: fadeInPrev 0.5s ease-in forwards;
+}
+
+@keyframes fadeInPrev {
+    0% { transform: translateX(-100%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+.fade-in-next {
+    animation: fadeInNext 0.5s ease-in forwards;
+}
+
+@keyframes fadeInNext {
+    0% { transform: translateX(100%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+/* Media query for screens smaller than 768px (e.g., smartphones) */
+@media only screen and (max-width: 767px) {
+
+    p{
+        display: hidden;
+    }
+    #divMenuInicial {
+        background-size: cover; /* Adjust background size for smaller screens */
+        height: 100vh; /* Ensure container fills the viewport */
+    }
+
+    .image-container img {
+        width: 80%; /* Adjust image size for smaller screens */
+        height: auto;
+        margin-top: 20px; /* Add margin to separate image from text */
+    }
+
+    p {
+        font-size: 24px; /* Decrease font size for smaller screens */
+    }
+
+    #btIzq, #btnDcha {
+        width: 70px; /* Adjust button size for smaller screens */
+    }
+
+    #btIzq {
+        margin-right: 20px; /* Adjust button margin for smaller screens */
+    }
+
+    #btnDcha {
+        margin-left: 20px; /* Adjust button margin for smaller screens */
+    }
+
+    #divMenuInicial {
+        background-attachment: scroll; /* Override background attachment for small devices */
+    }
 }
