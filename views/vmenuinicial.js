@@ -36,7 +36,7 @@ export class MenuInicial extends Vista {
   
     document.body.appendChild(imageElement);
   
-    await new Promise(resolve => setTimeout(resolve, 0));
+    await new Promise(resolve => setTimeout(resolve, 50));
   
     imageElement.style.transition = 'opacity 1s ease';
     imageElement.style.opacity = '0';

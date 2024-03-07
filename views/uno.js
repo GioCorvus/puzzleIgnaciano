@@ -1,36 +1,70 @@
+import { ModeloPuzzle } from './../models/modelopuzzle.js';
 import { Vista } from './vista.js';
-import { Rest } from '../service/rest.js';
 
 export class Uno extends Vista {
   constructor(controlador, base) {
     super(controlador, base);
-    this.restService = new Rest();
-    this.crearGrid(2,2)
+
+    this.siguienteImg = document.getElementById('siguienteImg-infantil');
+    this.modelopuzzle = new ModeloPuzzle();
+   
+
+    // Asigna el evento clic al botón
+    this.siguienteImg.addEventListener('click', () => this.mostrarSiguienteImgInfantil());
+    this.contador = 1;
+  }
+
+  mostrarSiguienteImgInfantil() {
+    if (this.contador < 10){
+      const imagen = `ignacio0${this.contador}`;
+      this.mostrarDatosInfantil(imagen);
+    }else{
+      const imagen = `ignacio${this.contador}`;
+      this.mostrarDatosInfantil(imagen);
+    }
+    this.contador++;
+  }
+
+
+  async mostrarDatosInfantil(img) {
+
+    const respuesta =await this.modelopuzzle.sacarDatosImagenes(2, img);
+    this.mostrarDatosInfantilImagenes(respuesta);
+    this.mostrarDimensionesInfantil(respuesta);
+  }
+
+  mostrarDatosInfantilImagenes(imagenes) {
+    const arrayDeImagenes = imagenes.imagenes;
+    // const contenedorImagenes = document.getElementById("contenedor-imagenes-infantil");
+     const contenedorImagenes = document.getElementById("contenidopiezas");
+    
+
+    while (contenedorImagenes.firstChild) {
+      contenedorImagenes.removeChild(contenedorImagenes.firstChild)
+    }
+
+    arrayDeImagenes.forEach((imagen, index) => {
+      const imgElement = document.createElement("img");
+      imgElement.id = `pieza${index + 1}`;
+      imgElement.className = "pieza";
+      imgElement.draggable = true;
+      imgElement.src = `data:image/jpeg;base64,${imagen}`;
+      imgElement.alt = `Imagen ${index + 1}`;
+    
+      contenedorImagenes.appendChild(imgElement);
+    });    
+
     this.inicializarDragAndDrop();
   }
-crearGrid(x,y){
-  //X Columnas
-  //Y Filas
-  console.log("CrearGrid")
-  const tablero = document.getElementById('puzzle');
-  tablero.innerHTML = '';
 
-  tablero.style.gridTemplateColumns = `repeat(${x}, 1fr)`;
-  tablero.style.gridTemplateRows = `repeat(${y}, 1fr)`;
-
-  for (let i = 0; i < x * y; i++) {
-      const celda = document.createElement('div');
-      celda.className="celda";
-      celda.id="celda"+(i+1);
-      tablero.appendChild(celda);
+  mostrarDimensionesInfantil(dimensiones) {
+    const nX = dimensiones.nX;
+    const nY = dimensiones.nY;
+    const lado = dimensiones.lado;
+    console.log(nX, nY, lado);
   }
-}
 
-validarPuzzle(){
-
-}
   inicializarDragAndDrop() {
-    console.log("draganddrop")
     try {
       const piezas = document.querySelectorAll('.contenido #contenidopiezas .pieza');
       const celdas = document.querySelectorAll('.contenido #puzzle .celda');
@@ -113,6 +147,7 @@ validarPuzzle(){
       if (piezaArrastrada.parentNode === contenedorPiezas) {
         piezaArrastrada.parentNode.removeChild(piezaArrastrada);
       }
+
 
       // Si la pieza se encuentra en una celda del puzzle, la movemos a la celda destino
       celdaDestino.appendChild(piezaArrastrada);
