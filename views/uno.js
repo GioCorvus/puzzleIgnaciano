@@ -7,11 +7,32 @@ export class Uno extends Vista {
 
     this.siguienteImg = document.getElementById('siguienteImg-infantil');
     this.modelopuzzle = new ModeloPuzzle();
-   
-
+  
     // Asigna el evento clic al botón
     this.siguienteImg.addEventListener('click', () => this.mostrarSiguienteImgInfantil());
     this.contador = 1;
+  }
+
+  crearGrid(x,y){
+    //X Columnas
+    //Y Filas
+    console.log("CrearGrid")
+    const tablero = document.getElementById('puzzle');
+    tablero.innerHTML = '';
+  
+    tablero.style.gridTemplateColumns = `repeat(${x}, 1fr)`;
+    tablero.style.gridTemplateRows = `repeat(${y}, 1fr)`;
+  
+    for (let i = 0; i < x * y; i++) {
+        const celda = document.createElement('div');
+        celda.className="celda";
+        celda.id="celda"+(i+1);
+        tablero.appendChild(celda);
+    }
+  }
+  
+  validarPuzzle(){
+  
   }
 
   mostrarSiguienteImgInfantil() {
@@ -54,14 +75,18 @@ export class Uno extends Vista {
       contenedorImagenes.appendChild(imgElement);
     });    
 
-    this.inicializarDragAndDrop();
+    this.mostrarDimensionesInfantil(imagenes);
+
   }
 
   mostrarDimensionesInfantil(dimensiones) {
     const nX = dimensiones.nX;
     const nY = dimensiones.nY;
     const lado = dimensiones.lado;
-    console.log(nX, nY, lado);
+    this.crearGrid(nX, nY)
+
+    this.inicializarDragAndDrop();
+
   }
 
   inicializarDragAndDrop() {
