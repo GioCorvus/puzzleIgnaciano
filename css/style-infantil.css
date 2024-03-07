@@ -1,0 +1,120 @@
+@font-face {
+    font-family: 'fuentekids';
+    src: url("../assets/fonts/Moanas.ttf") format('truetype');
+}
+body, html{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+.encabezado{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(191, 151, 126);
+}
+#divUno, #divDos{
+    height: 100%;
+}
+.contenido{
+    height: 90%;
+    width: 100%;
+    display: flex;
+}
+#contenidopiezas{
+    display: block;
+    width: 30%;
+    height: 99%;
+    background-color: rgb(191, 151, 126);
+    border: 3px solid white;
+    border-radius: 0px 15px 15px 0px;
+}
+#contenidotablero{
+    background-image: url("../assets/img/fondo.png");
+    background-size: 100%;
+    display: flex;
+    width: 70%;
+    height: 100%;
+}
+.titulo{
+    font-family: 'fuentekids';
+    font-size: 65px;
+}
+.pieza{
+    border: 1px solid black;
+    background-color: red;
+    display: block;
+    width: 180px;
+    height: 180px;
+    position: relative;
+    left:50px ;
+    top:100px ;
+}
+#jesuita1,#jesuita2{
+    position: absolute;
+    display: block;
+    width: 200px;
+    height: 200px;
+    bottom: 0px;
+}
+#jesuita1{
+    left: 25px;
+    bottom: -8px;
+}
+#jesuita2{
+    right: 25px;
+}
+#puzzle {
+    display: grid;
+    grid-template-rows: 1fr 1fr; /* Dos filas de tamaño automático */
+    grid-template-columns: 1fr 1fr 1fr; /* Tres columnas de tamaño automático */
+    gap: 0px; /* Espacio entre las celdas */
+    justify-items: center; /* Alineación horizontal al centro */
+    border: 3px solid black; /* Agrega un borde sólido de 2px de grosor en negro */
+    padding: 5px; /* Añade un espacio interior de 10px */
+    width: 80%; /* Ancho del 80% */
+    height: 90%; /* Altura del 60% */
+    margin: auto;
+    background-color: rgb(191, 151, 126);
+}
+
+/* Estilos para las imágenes dentro del grid */
+#puzzle div {
+    min-width: 100%; /* Para asegurar que las imágenes no se salgan del contenedor */
+    min-height: 100%;
+    border: 1px solid black;
+    background-color:rgb(219, 197, 184) ;
+}
+#textoImagen{
+    width: 36%;
+    background-color: rgb(221, 186, 164);
+    border-left: rgb(241, 218, 203) solid 2px;
+    padding: 2%;
+    font-size: 30px;
+    text-align: justify;
+}
+#imagenCompleta{
+    background-image: url("../assets/img/fondo.png");
+    width: 60%;
+    text-align: center;
+}
+#imagenCompleta img{
+    width: 90%;
+    height: 75%;
+    display: block;
+    margin: 5% auto 0;
+}
+#imagenCompleta button{
+    width: 55%;
+    height: 10%;
+    background-color: #E87B00;
+    border-color: #cc6d00;
+    border-radius: 20px;
+    cursor: pointer;
+    color: white;
+    font-weight: bolder;
+    font-size: 30px;
+}

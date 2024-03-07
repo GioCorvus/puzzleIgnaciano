@@ -31,11 +31,14 @@ html, body{
     height: 90%;
 }
 #textoImagen{
-    width: 30%;
+    width: 36%;
     background-color: white;
     border-left: #CCCCCC solid 2px;
-    padding: 5%;
-    font-size: 20px;
+    padding: 2%;
+    font-size: 27px;
+    line-height: 32px;
+    text-align: justify;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 #imagenCompleta{
     width: 60%;
@@ -121,33 +124,4 @@ html, body{
     min-height: 100%;
     border: 1px solid #afe694;
     background-color:#edffe4 ;
-}
-#puzzle .celda1 {
-    grid-row: 1;
-    grid-column: 1;
-}
-
-#puzzle .celda2 {
-    grid-row: 1;
-    grid-column: 2;
-}
-
-#puzzle .celda3 {
-    grid-row: 1; /* Primera fila */
-    grid-column: 3; /* Tercera columna */
-}
-
-#puzzle .celda4 {
-    grid-row: 2; /* Segunda fila */
-    grid-column: 1; /* Primera columna */
-}
-
-#puzzle .celda5 {
-    grid-row: 2; /* Segunda fila */
-    grid-column: 2; /* Segunda columna */
-}
-
-#puzzle .celda6 {
-    grid-row: 2; /* Segunda fila */
-    grid-column: 3; /* Tercera columna */
 }
