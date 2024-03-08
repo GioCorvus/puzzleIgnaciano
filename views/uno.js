@@ -5,6 +5,8 @@ export class Uno extends Vista {
   constructor(controlador, base) {
     super(controlador, base);
 
+    this.arrayImagenes=[];
+
     this.siguienteImg = document.getElementById('siguienteImg-infantil');
     this.modelopuzzle = new ModeloPuzzle();
   
@@ -30,10 +32,52 @@ export class Uno extends Vista {
         tablero.appendChild(celda);
     }
   }
-  
-  validarPuzzle(){
-  
+
+  validarPuzzle() {
+      console.log("validar");
+      
+      // Selecciona todas las celdas con la clase "celda"
+      let celdas = document.querySelectorAll('.celda');
+
+      // Array para almacenar las imágenes dentro de las celdas
+      let arrayPiezas = [];
+
+      // Itera sobre cada celda
+      celdas.forEach(function(celda) {
+          // Buscar imágenes con la clase "pieza" dentro de la celda actual
+          let piezasEnCelda = celda.querySelectorAll('.pieza');
+          
+          // Itera sobre las imágenes encontradas y agregarlas al array
+          piezasEnCelda.forEach(function(pieza) {
+              arrayPiezas.push(pieza);
+          });
+      });
+     
+      if(this.sonArraysIguales(arrayPiezas,this.arrayImagenes)){
+        console.log("iguales")
+      }
+      // Ahora arrayCeldas contiene todas las imágenes dentro de las celdas con id "celda"
+      console.log(arrayPiezas);
+      console.log(this.arrayImagenes);
   }
+
+  sonArraysIguales(array1, array2) {
+    // Verificar si tienen la misma longitud
+    if (array1.length !== array2.length) {
+        return false;
+    }
+
+    // Iterar sobre los elementos de uno de los arrays y compararlos con los elementos del otro array
+    for (let i = 0; i < array1.length; i++) {
+        if (array1[i] !== array2[i]) {
+            return false;
+        }
+    }
+
+    // Si todas las comparaciones son iguales, los arrays son iguales
+    return true;
+}
+
   mostrarSiguienteImgInfantil() {
     if (this.contador < 10){
       const imagen = `ignacio0${this.contador}`;
@@ -47,12 +91,24 @@ export class Uno extends Vista {
 
 
   async mostrarDatosInfantil(img) {
-
     const respuesta =await this.modelopuzzle.sacarDatosImagenes(2, img);
     this.mostrarDatosInfantilImagenes(respuesta);
     this.mostrarDimensionesInfantil(respuesta);
+    this.guardarordenPiezas();
   }
+  guardarordenPiezas() {
+    // Selecciona todas las imágenes con la clase "pieza"
+    let imagenes = document.querySelectorAll('.pieza');
 
+    // Crea un array vacío para almacenar las imágenes en orden
+    let self = this;
+    self.arrayImagenes = [];
+
+    // Itera sobre las imágenes y guárdalas en el array
+    imagenes.forEach(function(imagen) {
+        self.arrayImagenes.push(imagen);
+    });
+  }
   mostrarDatosInfantilImagenes(imagenes) {
     const arrayDeImagenes = imagenes.imagenes;
     // const contenedorImagenes = document.getElementById("contenedor-imagenes-infantil");
@@ -175,6 +231,7 @@ export class Uno extends Vista {
 
       // Si la pieza se encuentra en una celda del puzzle, la movemos a la celda destino
       celdaDestino.appendChild(piezaArrastrada);
+      this.validarPuzzle();
     } catch (error) {
       console.error('Error en drop:', error.message);
     }
