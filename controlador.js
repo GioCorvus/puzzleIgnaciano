@@ -13,7 +13,6 @@ export class Controlador {
     constructor() {
         // this.modeloobra = new ModeloObra()
 
-
         //conseguimos la referencia de la interface
         const divMenuInicial = document.getElementById('divMenuInicial')
         const divUno = document.getElementById('divUno')
@@ -35,7 +34,7 @@ export class Controlador {
         
     }
 
-   
+    
     verVista (vista) {
         this.ocultarVistas()
         this.vistas.get(vista).mostrar(true)

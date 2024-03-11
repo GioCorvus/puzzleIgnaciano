@@ -6,6 +6,9 @@ export class Vista {
       Vista.vtres = Symbol('Tres')
       Vista.vcuatro = Symbol('Cuatro')
 
+      Vista.css_infantil = Symbol('style-infantil')
+      Vista.css_eso = Symbol('style-eso')
+
     }
   
     constructor(controlador, base) {

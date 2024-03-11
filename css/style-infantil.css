@@ -16,9 +16,6 @@ body, html{
     align-items: center;
     background-color: rgb(191, 151, 126);
 }
-#divUno{
-    height: 100%;
-}
 .contenido{
     height: 90%;
     width: 100%;

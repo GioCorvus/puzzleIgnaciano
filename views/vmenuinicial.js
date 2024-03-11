@@ -120,29 +120,43 @@ export class MenuInicial extends Vista {
   }
 
   pulsarUno(){
-    console.log("wololo1")
+    console.log("wololo1");
+    this.aniadirCSS(Vista.css_infantil);
     this.controlador.verVista(Vista.vuno);
 
   }
 
   pulsarDos(){
     console.log("wololo2")
+    this.aniadirCSS(Vista.css_infantil);
     this.controlador.verVista(Vista.vdos);
 
   }
 
   pulsarTres(){
     console.log("wololo3")
+    this.aniadirCSS(Vista.css_eso);
     this.controlador.verVista(Vista.vtres);
 
   }
 
   pulsarCuatro(){
     console.log("wololo4")
+    this.aniadirCSS(Vista.css_eso);
     this.controlador.verVista(Vista.vcuatro);
 
   }
 
+  aniadirCSS(css){
+    const enlace = document.createElement('link')
+
+    enlace.rel = 'stylesheet'
+    enlace.href = 'css/'+css.description+'.css'
+
+    const head = document.head
+
+    head.appendChild(enlace)
+}
 
 
 }
