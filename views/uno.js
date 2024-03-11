@@ -15,7 +15,40 @@ export class Uno extends Vista {
     this.siguienteImg.addEventListener('click', () => this.mostrarSiguienteImgInfantil());
     this.contador = 1;
   }
- crearGrid(x,y){
+
+  aplicarRotacionAleatoria(imagen) {
+    // Genera un ángulo aleatorio entre 0 y 3 (0, 90, 180 o 270 grados)
+    let anguloAleatorio = Math.floor(Math.random() * 4) * 90;
+    let self=this
+    // Aplica la rotación aleatoria a la imagen utilizando transform
+    imagen.style.transform = 'rotate(' + anguloAleatorio + 'deg)';
+    
+    // Verifica si la imagen está centrada
+    if (anguloAleatorio % 360 === 0) {
+        console.log("La imagen está centrada");
+    }
+    
+    // Agrega un evento de doble clic a la imagen para rotarla 90 grados a la derecha
+    imagen.addEventListener("dblclick", function() {
+        // Obtiene el ángulo actual de rotación de la imagen
+        let anguloActual = parseInt(imagen.style.transform.replace('rotate(', '').replace('deg)', ''));
+        
+        // Calcula el nuevo ángulo de rotación (90 grados a la derecha)
+        let nuevoAngulo = (anguloActual + 90) % 360;
+        
+        // Aplica la rotación a la imagen
+        imagen.style.transform = 'rotate(' + nuevoAngulo + 'deg)';
+        
+        // Actualiza el ángulo aleatorio para futuras rotaciones
+        anguloAleatorio = nuevoAngulo;
+        self.validarPuzzle()
+        // Verifica si la imagen está centrada después de la rotación
+        if (nuevoAngulo % 360 === 0) {
+            console.log("La imagen está centrada");
+        }
+    });
+}
+  crearGrid(x,y){
     //X Columnas
     //Y Filas
     console.log("CrearGrid")
@@ -66,12 +99,19 @@ export class Uno extends Vista {
     if (array1.length !== array2.length) {
         return false;
     }
-
     // Iterar sobre los elementos de uno de los arrays y compararlos con los elementos del otro array
     for (let i = 0; i < array1.length; i++) {
-        if (array1[i] !== array2[i]) {
-            return false;
-        }
+      var transformValue = array1[i].style.transform;
+
+      // Utilizar una expresión regular para extraer el número de rotación
+      var matches = transformValue.match(/rotate\(([-0-9]+)deg\)/);
+      
+      // Verificar si se encontró una coincidencia y extraer el número
+      var angulo = matches ? parseInt(matches[1]) : 0;
+
+      if (array1[i] !== array2[i] ||angulo%360!=0) {
+        return false;
+      }
     }
 
     // Si todas las comparaciones son iguales, los arrays son iguales
@@ -107,6 +147,7 @@ export class Uno extends Vista {
     // Itera sobre las imágenes y guárdalas en el array
     imagenes.forEach(function(imagen) {
         self.arrayImagenes.push(imagen);
+        self.aplicarRotacionAleatoria(imagen)
     });
   }
   mostrarDatosInfantilImagenes(imagenes) {
