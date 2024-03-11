@@ -5,13 +5,16 @@ export class Uno extends Vista {
   constructor(controlador, base) {
     super(controlador, base);
 
-    this.siguienteImg = document.getElementById('siguienteImg-infantil');
+    this.siguienteImg = document.getElementById('siguienteImg');
+    
     this.modelopuzzle = new ModeloPuzzle();
   
+    this.nivel = null; 
 
     // Asigna el evento clic al botón
-    this.siguienteImg.addEventListener('click', () => this.mostrarSiguienteImgInfantil());
+    this.siguienteImg.addEventListener('click', () => this.mostrarSiguienteImg());
     this.contador = 1;
+    this.totalPuzzles = 16;
   }
  crearGrid(x,y){
     //X Columnas
@@ -30,11 +33,17 @@ export class Uno extends Vista {
         tablero.appendChild(celda);
     }
   }
-  
-  validarPuzzle(){
-  
+
+  mostrar(visible, nivel) {
+    super.mostrar(visible);
+
+    if (visible) {
+        this.nivel = nivel; // Almacena el nivel cuando se muestra la vista Uno
+        console.log(`Mostrando Vista Uno con nivel ${this.nivel}`);
+    }
   }
-  mostrarSiguienteImgInfantil() {
+
+  mostrarSiguienteImg() {
     if (this.contador < 10){
       const imagen = `ignacio0${this.contador}`;
       this.mostrarDatosInfantil(imagen);
@@ -47,15 +56,20 @@ export class Uno extends Vista {
 
 
   async mostrarDatosInfantil(img) {
+    console.log('NIVEL: ' + this.nivel);
+    const respuesta = await this.modelopuzzle.sacarDatosImagenes(this.nivel, img);
+    this.mostrarDatosImagenes(respuesta);
+    this.mostrarDimensiones(respuesta);
 
-    const respuesta =await this.modelopuzzle.sacarDatosImagenes(2, img);
-    this.mostrarDatosInfantilImagenes(respuesta);
-    this.mostrarDimensionesInfantil(respuesta);
-  }
+    if (this.puzzlesCompletados === this.totalPuzzles) {
+        alert('¡Felicidades! Has completado todos los puzzles del nivel.');
+        this.regresarAlMenuInicial();  // Función para volver al menú inicial
+    }
+}
 
-  mostrarDatosInfantilImagenes(imagenes) {
+  mostrarDatosImagenes(imagenes) {
+    console.log(imagenes)
     const arrayDeImagenes = imagenes.imagenes;
-    // const contenedorImagenes = document.getElementById("contenedor-imagenes-infantil");
      const contenedorImagenes = document.getElementById("contenidopiezas");
     
 
@@ -74,11 +88,11 @@ export class Uno extends Vista {
       contenedorImagenes.appendChild(imgElement);
     });    
 
-    this.mostrarDimensionesInfantil(imagenes);
+    this.mostrarDimensiones(imagenes);
 
   }
 
-  mostrarDimensionesInfantil(dimensiones) {
+  mostrarDimensiones(dimensiones) {
     const nX = dimensiones.nX;
     const nY = dimensiones.nY;
     const lado = dimensiones.lado;
