@@ -5,6 +5,7 @@ export class Uno extends Vista {
   constructor(controlador, base) {
     super(controlador, base);
 
+    this.dificultad=4
     this.arrayImagenes=[];
 
     this.siguienteImg = document.getElementById('siguienteImg-infantil');
@@ -54,7 +55,10 @@ export class Uno extends Vista {
     console.log("CrearGrid")
     const tablero = document.getElementById('puzzle');
     tablero.innerHTML = '';
-  
+    
+    let anchototal=document.getElementById('contenidotablero').offsetWidth;
+    let anchopiezafinal=(anchototal*0.7)/x
+
     tablero.style.gridTemplateColumns = `repeat(${x}, 1fr)`;
     tablero.style.gridTemplateRows = `repeat(${y}, 1fr)`;
   
@@ -62,6 +66,8 @@ export class Uno extends Vista {
         const celda = document.createElement('div');
         celda.className="celda";
         celda.id="celda"+(i+1);
+        celda.style.width=anchopiezafinal+ "px";
+        celda.style.height=anchopiezafinal+ "px";
         tablero.appendChild(celda);
     }
   }
@@ -131,7 +137,7 @@ export class Uno extends Vista {
 
 
   async mostrarDatosInfantil(img) {
-    const respuesta =await this.modelopuzzle.sacarDatosImagenes(2, img);
+    const respuesta =await this.modelopuzzle.sacarDatosImagenes(this.dificultad, img);
     this.mostrarDatosInfantilImagenes(respuesta);
     this.mostrarDimensionesInfantil(respuesta);
     this.guardarordenPiezas();
@@ -147,7 +153,9 @@ export class Uno extends Vista {
     // Itera sobre las imágenes y guárdalas en el array
     imagenes.forEach(function(imagen) {
         self.arrayImagenes.push(imagen);
-        self.aplicarRotacionAleatoria(imagen)
+        if(self.dificultad>2){
+          self.aplicarRotacionAleatoria(imagen)
+        }
     });
   }
   mostrarDatosInfantilImagenes(imagenes) {
