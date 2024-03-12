@@ -1,5 +1,6 @@
 import { Vista } from './vista.js';
 import { Rest } from '../service/rest.js';
+import { Uno } from './uno.js';
 
 export class MenuInicial extends Vista {
 
@@ -7,16 +8,8 @@ export class MenuInicial extends Vista {
     super(controlador, base);
     this.restService = new Rest();
 
-
-
-    // this.irLibros = this.base.querySelectorAll('button')[0];
-    // this.irAutores = this.base.querySelectorAll('button')[1];
-
-    // this.irLibros.onclick = this.pulsarIrLibros.bind(this);
-    // this.irAutores.onclick = this.pulsarIrAutores.bind(this);
-
-
-
+    this.controlador = controlador
+    this.base = base;
 
     this.imagenPortada();
     this.setupImageViewer(); 
@@ -36,7 +29,7 @@ export class MenuInicial extends Vista {
   
     document.body.appendChild(imageElement);
   
-    await new Promise(resolve => setTimeout(resolve, 0));
+    await new Promise(resolve => setTimeout(resolve, 50));
   
     imageElement.style.transition = 'opacity 1s ease';
     imageElement.style.opacity = '0';
@@ -119,32 +112,32 @@ export class MenuInicial extends Vista {
     showImage(currentIndex);
   }
 
-  pulsarUno(){
+  pulsarUno() {
     console.log("wololo1");
+    const nivel = 2;
     this.aniadirCSS(Vista.css_infantil);
-    this.controlador.verVista(Vista.vuno);
-
+    this.controlador.verVista(Vista.vuno, nivel);
   }
 
-  pulsarDos(){
-    console.log("wololo2")
+  pulsarDos() {
+    console.log("wololo2");
+    const nivel = 3;
     this.aniadirCSS(Vista.css_infantil);
-    this.controlador.verVista(Vista.vdos);
-
+    this.controlador.verVista(Vista.vuno, nivel);
   }
 
-  pulsarTres(){
-    console.log("wololo3")
+  pulsarTres() {
+    console.log("wololo3");
+    const nivel = 4;
     this.aniadirCSS(Vista.css_eso);
-    this.controlador.verVista(Vista.vtres);
-
+    this.controlador.verVista(Vista.vuno, nivel);
   }
 
-  pulsarCuatro(){
-    console.log("wololo4")
+  pulsarCuatro() {
+    console.log("wololo4");
+    const nivel = 5;
     this.aniadirCSS(Vista.css_eso);
-    this.controlador.verVista(Vista.vcuatro);
-
+    this.controlador.verVista(Vista.vuno, nivel);
   }
 
   aniadirCSS(css){

@@ -3,8 +3,6 @@ export class Vista {
       Vista.vmenuinicial = Symbol('Inicio') //Hacerlo con todas las vistas
       Vista.vuno = Symbol('Uno')
       Vista.vdos = Symbol('Dos')
-      Vista.vtres = Symbol('Tres')
-      Vista.vcuatro = Symbol('Cuatro')
 
       Vista.css_infantil = Symbol('style-infantil')
       Vista.css_eso = Symbol('style-eso')

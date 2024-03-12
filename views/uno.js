@@ -1,11 +1,105 @@
+import { ModeloPuzzle } from './../models/modelopuzzle.js';
 import { Vista } from './vista.js';
-import { Rest } from '../service/rest.js';
 
 export class Uno extends Vista {
   constructor(controlador, base) {
     super(controlador, base);
-    this.restService = new Rest();
+
+    this.siguienteImg = document.getElementById('siguienteImg');
+    
+    this.modelopuzzle = new ModeloPuzzle();
+  
+    this.nivel = null; 
+
+    // Asigna el evento clic al botón
+    this.siguienteImg.addEventListener('click', () => this.mostrarSiguienteImg());
+    this.contador = 1;
+    this.totalPuzzles = 16;
+  }
+ crearGrid(x,y){
+    //X Columnas
+    //Y Filas
+    console.log("CrearGrid")
+    const tablero = document.getElementById('puzzle');
+    tablero.innerHTML = '';
+  
+    tablero.style.gridTemplateColumns = `repeat(${x}, 1fr)`;
+    tablero.style.gridTemplateRows = `repeat(${y}, 1fr)`;
+  
+    for (let i = 0; i < x * y; i++) {
+        const celda = document.createElement('div');
+        celda.className="celda";
+        celda.id="celda"+(i+1);
+        tablero.appendChild(celda);
+    }
+  }
+
+  mostrar(visible, nivel) {
+    super.mostrar(visible);
+
+    if (visible) {
+        this.nivel = nivel; // Almacena el nivel cuando se muestra la vista Uno
+        console.log(`Mostrando Vista Uno con nivel ${this.nivel}`);
+    }
+  }
+
+  mostrarSiguienteImg() {
+    if (this.contador < 10){
+      const imagen = `ignacio0${this.contador}`;
+      this.mostrarDatosInfantil(imagen);
+    }else{
+      const imagen = `ignacio${this.contador}`;
+      this.mostrarDatosInfantil(imagen);
+    }
+    this.contador++;
+  }
+
+
+  async mostrarDatosInfantil(img) {
+    console.log('NIVEL: ' + this.nivel);
+    const respuesta = await this.modelopuzzle.sacarDatosImagenes(this.nivel, img);
+    this.mostrarDatosImagenes(respuesta);
+    this.mostrarDimensiones(respuesta);
+
+    if (this.puzzlesCompletados === this.totalPuzzles) {
+        alert('¡Felicidades! Has completado todos los puzzles del nivel.');
+        this.regresarAlMenuInicial();  // Función para volver al menú inicial
+    }
+}
+
+  mostrarDatosImagenes(imagenes) {
+    console.log(imagenes)
+    const arrayDeImagenes = imagenes.imagenes;
+     const contenedorImagenes = document.getElementById("contenidopiezas");
+    
+
+    while (contenedorImagenes.firstChild) {
+      contenedorImagenes.removeChild(contenedorImagenes.firstChild)
+    }
+
+    arrayDeImagenes.forEach((imagen, index) => {
+      const imgElement = document.createElement("img");
+      imgElement.id = `pieza${index + 1}`;
+      imgElement.className = "pieza";
+      imgElement.draggable = true;
+      imgElement.src = `data:image/jpeg;base64,${imagen}`;
+      imgElement.alt = `Imagen ${index + 1}`;
+    
+      contenedorImagenes.appendChild(imgElement);
+    });    
+
+    this.mostrarDimensiones(imagenes);
+
+  }
+
+  mostrarDimensiones(dimensiones) {
+    const nX = dimensiones.nX;
+    const nY = dimensiones.nY;
+    const lado = dimensiones.lado;
+    this.crearGrid(nX, nY)
+
     this.inicializarDragAndDrop();
+
   }
 
   inicializarDragAndDrop() {
@@ -91,6 +185,7 @@ export class Uno extends Vista {
       if (piezaArrastrada.parentNode === contenedorPiezas) {
         piezaArrastrada.parentNode.removeChild(piezaArrastrada);
       }
+
 
       // Si la pieza se encuentra en una celda del puzzle, la movemos a la celda destino
       celdaDestino.appendChild(piezaArrastrada);

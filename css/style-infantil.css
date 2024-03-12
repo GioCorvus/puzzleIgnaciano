@@ -28,6 +28,7 @@ body, html{
     background-color: rgb(191, 151, 126);
     border: 3px solid white;
     border-radius: 0px 15px 15px 0px;
+    overflow: auto;
 }
 #contenidotablero{
     background-image: url("../assets/img/fondo.png");
@@ -74,7 +75,7 @@ body, html{
     border: 3px solid black; /* Agrega un borde sólido de 2px de grosor en negro */
     padding: 5px; /* Añade un espacio interior de 10px */
     width: 80%; /* Ancho del 80% */
-    height: 60%; /* Altura del 60% */
+    height: 80%; /* Altura del 60% */
     margin: auto;
     background-color: rgb(191, 151, 126);
 }
@@ -94,33 +95,4 @@ body, html{
     height: 100%;
     padding: 0;
     margin: 0;
-}
-#puzzle #celda1 {
-    grid-row: 1;
-    grid-column: 1;
-}
-
-#puzzle #celda2 {
-    grid-row: 1;
-    grid-column: 2;
-}
-
-#puzzle #celda3 {
-    grid-row: 1; /* Primera fila */
-    grid-column: 3; /* Tercera columna */
-}
-
-#puzzle #celda4 {
-    grid-row: 2; /* Segunda fila */
-    grid-column: 1; /* Primera columna */
-}
-
-#puzzle #celda5 {
-    grid-row: 2; /* Segunda fila */
-    grid-column: 2; /* Segunda columna */
-}
-
-#puzzle #celda6 {
-    grid-row: 2; /* Segunda fila */
-    grid-column: 3; /* Tercera columna */
 }
