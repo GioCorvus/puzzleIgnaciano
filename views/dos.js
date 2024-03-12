@@ -13,7 +13,7 @@ export class Dos extends Vista {
     this.siguienteImg.addEventListener('click', () => this.mostrarSiguienteImgPrimaria());
     this.contador = 1;
   }
-zz
+
   mostrarSiguienteImgPrimaria() {
     if (this.contador < 10){
       const imagen = `ignacio0${this.contador}`;

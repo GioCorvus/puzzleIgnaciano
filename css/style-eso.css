@@ -1,0 +1,125 @@
+@font-face {
+    font-family: 'fuentekids';
+    src: url("../assets/fonts/Moanas.ttf") format('truetype');
+}
+body, html{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+.encabezado{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #088DE0;
+}
+#divUno{
+    height: 100%;
+}
+.contenido{
+    height: 90%;
+    width: 100%;
+    display: flex;
+}
+#contenidopiezas{
+    display: block;
+    width: 30%;
+    height: 99%;
+    background-color: white;
+    border: 3px solid #CCCCCC;
+    border-radius: 0px 15px 15px 0px;
+    overflow: auto;
+}
+#contenidotablero{
+    background-image: url("../assets/img/fondo.png");
+    background-size: 100%;
+    display: flex;
+    width: 70%;
+    height: 100%;
+}
+.titulo{
+    font-family: 'fuentekids';
+    font-size: 65px;
+}
+.pieza{
+    display: block;
+    width: 180px;
+    height: 180px;
+    position: relative;
+    left:50px ;
+    top:100px ;
+}
+#jesuita1,#jesuita2{
+    position: absolute;
+    display: block;
+    width: 200px;
+    height: 200px;
+    bottom: 0px;
+}
+#jesuita1{
+    left: 25px;
+    bottom: -8px;
+}
+#jesuita2{
+    right: 25px;
+}
+#puzzle {
+    display: grid;
+    grid-template-rows: 1fr 1fr; /* Dos filas de tamaño automático */
+    grid-template-columns: 1fr 1fr 1fr; /* Tres columnas de tamaño automático */
+    gap: 0px; /* Espacio entre las celdas */
+    justify-items: center; /* Alineación horizontal al centro */
+    
+    border: 3px solid #CCCCCC; /* Agrega un borde sólido de 2px de grosor en negro */
+    padding: 5px; /* Añade un espacio interior de 10px */
+    margin: auto;
+    background-color: white;
+}
+
+/* Estilos para las imágenes dentro del grid */
+#puzzle div {
+    padding: 0px;
+    border: 1px solid #898989;
+    background-color:#edffe4 ;
+}
+#puzzle  img{
+    top:0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+#textoImagen{
+    width: 30%;
+    background-color: white;
+    border-left: #CCCCCC solid 2px;
+    padding: 5%;
+    font-size: 20px;
+}
+#imagenCompleta{
+    width: 60%;
+    text-align: center;
+}
+#imagenCompleta img{
+    width: 90%;
+    height: 75%;
+    display: block;
+    margin: 5% auto 0;
+}
+#imagenCompleta button{
+    width: 55%;
+    height: 10%;
+    background-color: #E87B00;
+    border-color: #cc6d00;
+    border-radius: 20px;
+    cursor: pointer;
+    color: white;
+    font-weight: bolder;
+    font-size: 30px;
+}

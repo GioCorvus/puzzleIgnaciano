@@ -115,25 +115,36 @@ export class MenuInicial extends Vista {
   pulsarUno() {
     console.log("wololo1");
     const nivel = 2;
+    this.aniadirCss(Vista.css_infantil);
     this.controlador.verVista(Vista.vuno, nivel);
   }
 
   pulsarDos() {
     console.log("wololo2");
     const nivel = 3;
+    this.aniadirCss(Vista.css_infantil);
     this.controlador.verVista(Vista.vuno, nivel);
   }
 
   pulsarTres() {
     console.log("wololo3");
     const nivel = 4;
+    this.aniadirCss(Vista.css_eso);
     this.controlador.verVista(Vista.vuno, nivel);
   }
 
   pulsarCuatro() {
     console.log("wololo4");
     const nivel = 5;
+    this.aniadirCss(Vista.css_eso);
     this.controlador.verVista(Vista.vuno, nivel);
   }
 
+  aniadirCss(css){
+    const enlace = document.createElement('link');
+    enlace.rel = 'stylesheet';
+    enlace.href = 'css/'+css.description+'.css';
+    const head = document.head
+    head.appendChild(enlace);
+  }
 }
