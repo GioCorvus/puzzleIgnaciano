@@ -8,13 +8,19 @@ export class Uno extends Vista {
     this.dificultad=4
     this.arrayImagenes=[];
 
-    this.siguienteImg = document.getElementById('siguienteImg-infantil');
+    this.dificultad=4
+    this.arrayImagenes=[];
+
+    this.siguienteImg = document.getElementById('siguienteImg');
+    
     this.modelopuzzle = new ModeloPuzzle();
   
+    this.nivel = null; 
 
     // Asigna el evento clic al botón
-    this.siguienteImg.addEventListener('click', () => this.mostrarSiguienteImgInfantil());
+    this.siguienteImg.addEventListener('click', () => this.mostrarSiguienteImg());
     this.contador = 1;
+    this.totalPuzzles = 16;
   }
 
   aplicarRotacionAleatoria(imagen) {
@@ -72,6 +78,14 @@ export class Uno extends Vista {
     }
   }
 
+  mostrar(visible, nivel) {
+    super.mostrar(visible);
+
+    if (visible) {
+        this.nivel = nivel; // Almacena el nivel cuando se muestra la vista Uno
+        console.log(`Mostrando Vista Uno con nivel ${this.nivel}`);
+    }
+  }
   validarPuzzle() {
       console.log("validar");
       
@@ -124,7 +138,7 @@ export class Uno extends Vista {
     return true;
 }
 
-  mostrarSiguienteImgInfantil() {
+  mostrarSiguienteImg() {
     if (this.contador < 10){
       const imagen = `ignacio0${this.contador}`;
       this.mostrarDatosInfantil(imagen);
@@ -160,7 +174,6 @@ export class Uno extends Vista {
   }
   mostrarDatosInfantilImagenes(imagenes) {
     const arrayDeImagenes = imagenes.imagenes;
-    // const contenedorImagenes = document.getElementById("contenedor-imagenes-infantil");
      const contenedorImagenes = document.getElementById("contenidopiezas");
     
 
@@ -179,11 +192,11 @@ export class Uno extends Vista {
       contenedorImagenes.appendChild(imgElement);
     });    
 
-    this.mostrarDimensionesInfantil(imagenes);
+    this.mostrarDimensiones(imagenes);
 
   }
 
-  mostrarDimensionesInfantil(dimensiones) {
+  mostrarDimensiones(dimensiones) {
     const nX = dimensiones.nX;
     const nY = dimensiones.nY;
     const lado = dimensiones.lado;
