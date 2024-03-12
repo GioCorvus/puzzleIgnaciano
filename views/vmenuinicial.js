@@ -117,6 +117,7 @@ export class MenuInicial extends Vista {
     const nivel = 2;
     this.aniadirCss(Vista.css_infantil);
     this.controlador.verVista(Vista.vuno, nivel);
+    this.controlador.cargar(Vista.vuno);
   }
 
   pulsarDos() {
@@ -124,6 +125,7 @@ export class MenuInicial extends Vista {
     const nivel = 3;
     this.aniadirCss(Vista.css_infantil);
     this.controlador.verVista(Vista.vuno, nivel);
+    this.controlador.cargar(Vista.vuno);
   }
 
   pulsarTres() {
@@ -131,6 +133,7 @@ export class MenuInicial extends Vista {
     const nivel = 4;
     this.aniadirCss(Vista.css_eso);
     this.controlador.verVista(Vista.vuno, nivel);
+    this.controlador.cargar(Vista.vuno);
   }
 
   pulsarCuatro() {
@@ -138,6 +141,7 @@ export class MenuInicial extends Vista {
     const nivel = 5;
     this.aniadirCss(Vista.css_eso);
     this.controlador.verVista(Vista.vuno, nivel);
+    this.controlador.cargar(Vista.vuno);
   }
 
   aniadirCss(css){

@@ -18,4 +18,7 @@ export class Vista {
       else 
         this.base.style.display = 'none'
     }
+    cargar(){
+      this.mostrarSiguienteImg();
+    }
   }

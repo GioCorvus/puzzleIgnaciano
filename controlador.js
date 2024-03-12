@@ -28,7 +28,9 @@ export class Controlador {
         this.ocultarVistas();
         this.vistas.get(vista).mostrar(true, nivel);
     }
-    
+    cargar(vista){
+        this.vistas.get(vista).cargar()
+    }
     
     ocultarVistas(){
         for(const vista of this.vistas.values())
