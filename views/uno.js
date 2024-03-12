@@ -5,17 +5,13 @@ export class Uno extends Vista {
   constructor(controlador, base) {
     super(controlador, base);
 
-    this.dificultad=4
-    this.arrayImagenes=[];
-
-    this.dificultad=4
+    this.dificultad;
     this.arrayImagenes=[];
 
     this.siguienteImg = document.getElementById('siguienteImg');
     
     this.modelopuzzle = new ModeloPuzzle();
   
-    this.nivel = null; 
 
     // Asigna el evento clic al botón
     this.siguienteImg.addEventListener('click', () => this.mostrarSiguienteImg());
@@ -80,9 +76,9 @@ export class Uno extends Vista {
 
   mostrar(visible, nivel) {
     super.mostrar(visible);
-
+    //this.mostrarSiguienteImg()
     if (visible) {
-        this.nivel = nivel; // Almacena el nivel cuando se muestra la vista Uno
+        this.dificultad = nivel; // Almacena el nivel cuando se muestra la vista Uno
         console.log(`Mostrando Vista Uno con nivel ${this.nivel}`);
     }
   }
@@ -153,7 +149,7 @@ export class Uno extends Vista {
   async mostrarDatosInfantil(img) {
     const respuesta =await this.modelopuzzle.sacarDatosImagenes(this.dificultad, img);
     this.mostrarDatosInfantilImagenes(respuesta);
-    this.mostrarDimensionesInfantil(respuesta);
+    this.mostrarDimensiones(respuesta);
     this.guardarordenPiezas();
   }
   guardarordenPiezas() {
