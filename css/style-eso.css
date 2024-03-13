@@ -100,14 +100,16 @@ body, html{
     background-color: white;
     border-left: #CCCCCC solid 2px;
     padding: 5%;
-    font-size: 20px;
+}
+#textoImagen p{
+    font-size: 23px;
 }
 #imagenCompleta{
     width: 60%;
     text-align: center;
 }
 #imagenCompleta img{
-    width: 90%;
+    width: 80%;
     height: 75%;
     display: block;
     margin: 5% auto 0;

@@ -21,4 +21,16 @@ export class Vista {
     cargar(){
       this.mostrarSiguienteImg();
     }
+    mostrarSiguienteImg() {
+      if (this.contador < 10){
+        const imagen = `ignacio0${this.contador}`;
+        this.mostrarDatosInfantil(imagen);
+      }else{
+        const imagen = `ignacio${this.contador}`;
+        this.mostrarDatosInfantil(imagen);
+      }
+      console.log("cargarimagenes")
+      this.controlador.verVista(Vista.vuno);
+      this.contador++;
+    }
   }

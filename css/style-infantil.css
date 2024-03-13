@@ -85,7 +85,7 @@ body, html{
 /* Estilos para las imágenes dentro del grid */
 #puzzle div {
     padding: 0px;
-    border: 1px solid black;
+    border: 1px solid rgb(73, 73, 73);
     background-color:rgb(219, 197, 184) ;
 }
 #puzzle  img{
@@ -95,4 +95,36 @@ body, html{
     height: 100%;
     padding: 0;
     margin: 0;
+}
+
+#textoImagen{
+    width: 30%;
+    background-color: rgb(191, 151, 126);
+    border-left: white solid 2px;
+    padding: 5%;
+}
+#textoImagen p{
+    font-size: 23px;
+}
+#imagenCompleta{
+    width: 60%;
+    height: 100%;
+    text-align: center;
+}
+#imagenCompleta img{
+    width: 80%;
+    height: 75%;
+    display: block;
+    margin: 5% auto 0;
+}
+#imagenCompleta button{
+    width: 55%;
+    height: 10%;
+    background-color: #92DB6D;
+    border-color: #74b951;
+    border-radius: 20px;
+    cursor: pointer;
+    color: white;
+    font-weight: bolder;
+    font-size: 30px;
 }

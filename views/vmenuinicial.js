@@ -115,7 +115,7 @@ export class MenuInicial extends Vista {
   pulsarUno() {
     console.log("wololo1");
     const nivel = 2;
-    this.aniadirCss(Vista.css_infantil);
+    this.aniadirCss(Vista.css_infantil,'Infantil');
     this.controlador.verVista(Vista.vuno, nivel);
     this.controlador.cargar(Vista.vuno);
   }
@@ -123,7 +123,7 @@ export class MenuInicial extends Vista {
   pulsarDos() {
     console.log("wololo2");
     const nivel = 3;
-    this.aniadirCss(Vista.css_infantil);
+    this.aniadirCss(Vista.css_infantil,'Primaria');
     this.controlador.verVista(Vista.vuno, nivel);
     this.controlador.cargar(Vista.vuno);
   }
@@ -131,7 +131,7 @@ export class MenuInicial extends Vista {
   pulsarTres() {
     console.log("wololo3");
     const nivel = 4;
-    this.aniadirCss(Vista.css_eso);
+    this.aniadirCss(Vista.css_eso,'Secundaria');
     this.controlador.verVista(Vista.vuno, nivel);
     this.controlador.cargar(Vista.vuno);
   }
@@ -139,16 +139,24 @@ export class MenuInicial extends Vista {
   pulsarCuatro() {
     console.log("wololo4");
     const nivel = 5;
-    this.aniadirCss(Vista.css_eso);
+    this.aniadirCss(Vista.css_eso,'Bachillerato/Ciclo');
     this.controlador.verVista(Vista.vuno, nivel);
     this.controlador.cargar(Vista.vuno);
   }
 
-  aniadirCss(css){
+  aniadirCss(css, titulo){
+    const cssAnterior = document.getElementsByTagName('link')[0];
+    cssAnterior.remove();
+
     const enlace = document.createElement('link');
     enlace.rel = 'stylesheet';
     enlace.href = 'css/'+css.description+'.css';
-    const head = document.head
+    const head = document.head;
     head.appendChild(enlace);
+
+    const tituloPuzzle = document.getElementById('tituloPuzzle');
+    tituloPuzzle.innerHTML=titulo;
+    const tituloImagen = document.getElementById('tituloImagen');
+    tituloImagen.innerHTML=titulo;
   }
 }

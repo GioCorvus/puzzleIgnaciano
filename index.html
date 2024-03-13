@@ -19,7 +19,7 @@
 		</div>
 		<div id="divUno">
 			<header class="encabezado">
-				<h1 class="titulo" id="nivelTitulo">Infantil</h1>
+				<h1 class="titulo" id="tituloPuzzle"></h1>
 			</header>
 			<div class="contenido">
 				<div id="contenidopiezas">
@@ -28,12 +28,19 @@
 					<div id="puzzle">
 					</div>
 				</div>
-				<button id="siguienteImg">Siguiente puzzle</button>
 			</div>
 		</div>		  
 		<div id="divDos">
-			<div id="contenedor-imagenes-primaria"></div>
-			<button id="siguienteImg-primaria">Siguiente puzzle</button>
+			<header class="encabezado">
+				<h1 class="titulo" id="tituloImagen"></h1>
+			</header>
+			<div class="contenido">
+				<div id="imagenCompleta">
+					<img src="" id="imagen">
+					<button id="siguienteImg">Siguiente puzzle</button>
+				</div>
+				<div id="textoImagen"></div>
+			</div>
 		</div>
         <script type="module" src="controlador.js"></script>
 
